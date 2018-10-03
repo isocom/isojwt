@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/isocom/isojwt.svg?branch=master)](https://travis-ci.org/isocom/isojwt)
+
 # isojwt
 Opinionated Java JWT, JWS and JWE library.
 
