@@ -31,7 +31,7 @@ public class AESGCMTest {
     public void testToString() {
         String s = AESGCM.encrypt(key, "Hello".getBytes(), "Bart".getBytes()).toString();
         byte[] decrypted = AESGCM.decrypt(key, Tuple.parse(s), "Bart".getBytes());
-        assertEquals("Hello world", new String(decrypted));
+        assertEquals("Hello", new String(decrypted));
     }
 
 }
