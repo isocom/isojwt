@@ -25,6 +25,26 @@ public final class AESGCM {
             this.cipherText = cipherText;
             this.authTag = authTag;
         }
+
+        public static Tuple parse(String encrypted) {
+            String[] parts = encrypted.split("\\.");
+            final byte[] iv = Tools.BASE64DEC.decode(parts[0]);
+            final byte[] cipherText = Tools.BASE64DEC.decode(parts[1]);
+            final byte[] authTag = Tools.BASE64DEC.decode(parts[2]);
+            return new Tuple(iv, cipherText, authTag);
+        }
+
+        @Override
+        public String toString() {
+            final StringBuilder retVal = new StringBuilder();
+            retVal.append(Tools.BASE64URL.encodeToString(iv));
+            retVal.append('.');
+            retVal.append(Tools.BASE64URL.encodeToString(cipherText));
+            retVal.append('.');
+            retVal.append(Tools.BASE64URL.encodeToString(authTag));
+            return retVal.toString();
+        }
+
     }
 
     public static Tuple encrypt(final byte[] key, final byte[] plainText, final byte[] aad) {
