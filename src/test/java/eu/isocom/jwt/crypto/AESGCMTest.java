@@ -34,4 +34,19 @@ public class AESGCMTest {
         assertEquals("Hello", new String(decrypted));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidKey() {
+        AESGCM.encrypt(new byte[]{1, 2, 3}, "X".getBytes(), "".getBytes());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testEncryptionArgument() {
+        AESGCM.encrypt(key, "X".getBytes(), null);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testDecryptionArgument() {
+        AESGCM.decrypt(key, new Tuple(key, "X".getBytes(), "X".getBytes()), new byte[0]);
+    }
+
 }

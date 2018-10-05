@@ -7,7 +7,7 @@ import java.util.Base64;
 /**
  * @author Bart Prokop
  */
-public class Tools {
+public final class Tools {
     
     static final SecureRandom SECURE_RANDOM = getSecureRandom();
     static final Base64.Encoder BASE64URL = Base64.getEncoder().withoutPadding();

@@ -11,10 +11,7 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public final class AESGCM {
 
-    private AESGCM() {
-    }
-
-    public static class Tuple {
+    public static final class Tuple {
 
         public final byte[] iv;
         public final byte[] cipherText;
